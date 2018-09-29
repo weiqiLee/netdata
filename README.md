@@ -1,3 +1,50 @@
+监测内容：
+这是它目前检测的内容（大多数都不需要进行配置，安装后即可开始监测）
+
+1.CPU的使用率,中断，软中断和频率(总量和每个单核)
+2.RAM，互换和内核内存的使用率（包括KSM和内核内存deduper）
+3.硬盘输入/输出(每个硬盘的带宽，操作，整理，利用等)
+4.IPv4网络（数据包，错误，分片）：
+TCP：连接，数据包，错误，握手
+UDP:数据包，错误
+广播：带宽，数据包
+组播：带宽，数据包
+5.Netfilter/iptables Linux防火墙(连接，连接跟踪事件，错误等)
+6.进程(运行，受阻，分叉，活动等)
+7.熵
+8.NFS文件服务器，v2,v3,v4(输入/输出，缓存，预读，RPC调用)
+9.网络服务质量（唯一一个可实时可视化网络状况的工具）
+10.应用程序，通过对进程树进行分组（CPU,内存，硬盘读取，硬盘写入，交换，线程，管道，套接字等）
+11.Apache Web服务器状态(v2.2, v2.4)
+12.Nginx Web服务器状态
+13.Mysql数据库（多台服务器，单个显示：带宽，查询/s, 处理者，锁，问题，临时操作，连接，二进制日志，线程，innodb引擎等）
+14.ISC Bind域名服务器（多个服务器，单个显示：客户，请求，查询，更新，失败等）
+15.Postfix邮件服务器的消息队列（条目，大小）
+16.Squid代理服务器（客户带宽和请求，服务带宽和请求）
+17.硬件传感器（温度，电压，风扇，电源，湿度等）
+18.NUT UPSes（负载，充电，电池电压，温度，使用指标，输出指标）
+你可以监测任意数量的SNMP服务，不过你需要进行配置
+
+你可以对此软件进行扩展，可以使用任何语言编写插件，以此来从任何来源收集数据
+
+二：安装(CentOS)
+
+1.版本netdata-1.0.0.tar.gz(http://firehol.org/download/netdata/releases/v1.0.0/)
+
+2.安装依赖插件
+
+yum install zlib-devel gcc make git autoconf autogen automake pkgconfig
+3.安装 netdata
+
+tar -zxvf netdata-1.0.0.tar.gz
+./netdata-installer.sh --install /usr/local
+安装成功后可以看到/usr/local/netdata/etc/netdata/netdata.conf配置文件
+
+三：启动与关闭
+1.启动：/usr/local/netdata/usr/sbin/netdata
+2.关闭：killall netdata
+
+
 # netdata [![Build Status](https://travis-ci.com/netdata/netdata.svg?branch=master)](https://travis-ci.com/netdata/netdata) [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2231/badge)](https://bestpractices.coreinfrastructure.org/projects/2231) [![License: GPL v3+](https://img.shields.io/badge/License-GPL%20v3%2B-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 [![Code Climate](https://codeclimate.com/github/netdata/netdata/badges/gpa.svg)](https://codeclimate.com/github/netdata/netdata)
